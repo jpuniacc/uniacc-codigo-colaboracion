@@ -39,14 +39,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['vue'],
-          microsoft: ['@microsoft/microsoft-graph-client', '@azure/msal-browser']
-        }
-      }
-    }
+    sourcemap: false
   }
 })
