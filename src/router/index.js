@@ -8,34 +8,10 @@ const routes = [
     meta: { title: 'Inicio' }
   },
   {
-    path: '/principios',
-    name: 'Principios',
-    component: () => import('../views/PrincipiosView.vue'),
-    meta: { title: 'Los 7 Principios' }
-  },
-  {
     path: '/principios/:id',
     name: 'Principio',
     component: () => import('../views/PrincipioView.vue'),
     meta: { title: 'Principio' }
-  },
-  {
-    path: '/progreso',
-    name: 'Progreso',
-    component: () => import('../views/ProgresoView.vue'),
-    meta: { title: 'Mi Progreso' }
-  },
-  {
-    path: '/comenzar',
-    name: 'Comenzar',
-    component: () => import('../views/ComenzarView.vue'),
-    meta: { title: 'Comenzar Ahora' }
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: () => import('../views/DashboardView.vue'),
-    meta: { title: 'Dashboard' }
   }
 ]
 

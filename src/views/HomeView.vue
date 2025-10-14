@@ -1,122 +1,164 @@
 <template>
   <div class="home">
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="inicio" class="hero">
       <div class="hero-content animate-slide-up">
         <h1>Código de Colaboración UNIACC</h1>
-        <p class="hero-subtitle">7 reglas simples para trabajar mejor juntos</p>
+        <p class="hero-subtitle">7 principios fundamentales para la excelencia colaborativa</p>
+        <p class="hero-description">
+          Un decálogo inspirado en el trabajo en conjunto entre lideres del taller Juntos Creamos UNIACC.
+          Principios simples y concretos para transformar nuestra cultura de trabajo.
+        </p>
         <div class="hero-actions">
-          <router-link to="/comenzar" class="btn btn-primary btn-large">
-            🚀 Comenzar Ahora
-          </router-link>
-          <router-link to="/principios" class="btn btn-outline btn-large">
-            📖 Ver Reglas
-          </router-link>
-        </div>
-      </div>
-      <div class="hero-image animate-fade-in">
-        <div class="hero-illustration">
-          <div class="team-icon">👥</div>
-          <div class="collaboration-lines">
-            <div class="line line-1"></div>
-            <div class="line line-2"></div>
-            <div class="line line-3"></div>
-          </div>
+          <a href="#principios" class="btn btn-primary btn-large">
+            📖 Ver el Decálogo
+          </a>
+          <a href="#ejemplos" class="btn btn-outline btn-large">
+            💡 Ver Ejemplos
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
+    <!-- Principios Section -->
+    <section id="principios" class="principios-section">
       <div class="container">
-        <div class="stats-grid">
-          <div class="stat animate-slide-up">
-            <div class="stat-number">1,500+</div>
-            <div class="stat-label">Personas ya lo usan</div>
-          </div>
-          <div class="stat animate-slide-up">
-            <div class="stat-number">+89%</div>
-            <div class="stat-label">Mejora en satisfacción</div>
-          </div>
-          <div class="stat animate-slide-up">
-            <div class="stat-number">7</div>
-            <div class="stat-label">Reglas simples</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Principles Preview -->
-    <section class="principles-preview">
-      <div class="container">
-        <h2 class="section-title">Las 7 Reglas</h2>
-        <p class="section-subtitle">Cada regla tiene 3 pasos simples para implementar</p>
+        <h2 class="section-title">Los 7 Principios</h2>
+        <p class="section-subtitle">Cada principio es una guía práctica para mejorar nuestra colaboración</p>
         
-        <div class="principles-grid">
+        <div class="principios-grid">
           <div 
-            v-for="(principle, index) in principles" 
-            :key="principle.id"
-            class="principle-card animate-slide-up"
+            v-for="(principio, index) in principios" 
+            :key="principio.id"
+            class="principio-card animate-slide-up"
             :style="{ animationDelay: `${index * 0.1}s` }"
-            @click="goToPrinciple(principle.id)"
+            @click="verPrincipio(principio.id)"
           >
-            <div class="card-icon">{{ principle.icon }}</div>
-            <h3 class="card-title">{{ principle.title }}</h3>
-            <p class="card-description">{{ principle.description }}</p>
-            <div class="card-progress" v-if="principle.progress > 0">
-              <div class="progress-bar">
-                <div class="progress-fill" :style="{ width: principle.progress + '%' }"></div>
-              </div>
-              <span class="progress-text">{{ principle.progress }}% completado</span>
+            <div class="card-number">{{ index + 1 }}</div>
+            <div class="card-icon">{{ principio.icon }}</div>
+            <h3 class="card-title">{{ principio.title }}</h3>
+            <p class="card-description">{{ principio.description }}</p>
+            <div class="card-footer">
+              <span class="card-link">Ver detalles →</span>
             </div>
-            <div class="card-arrow">→</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- How it Works -->
-    <section class="how-it-works">
+    <!-- Ejemplos Rápidos Section -->
+    <section id="ejemplos" class="ejemplos-section">
       <div class="container">
-        <h2 class="section-title">Cómo Funciona</h2>
+        <h2 class="section-title">Ejemplos Concretos</h2>
+        <p class="section-subtitle">Situaciones reales donde aplicar estos principios</p>
         
-        <div class="steps">
-          <div class="step animate-slide-up">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Elige una Regla</h3>
-              <p>Selecciona la regla que quieres implementar primero</p>
-            </div>
+        <div class="ejemplos-grid">
+          <div class="ejemplo-card">
+            <div class="ejemplo-icon">📹</div>
+            <h3>Reuniones Virtuales</h3>
+            <ul class="ejemplo-list">
+              <li><strong>Enciende la cámara</strong> siempre en reuniones formales</li>
+              <li><strong>Envía la agenda</strong> 24 horas antes</li>
+              <li><strong>Inicia puntual</strong> sin esperar a nadie</li>
+              <li><strong>Participa activamente</strong> haciendo preguntas</li>
+            </ul>
           </div>
-          
-          <div class="step animate-slide-up">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Sigue 3 Pasos</h3>
-              <p>Cada regla tiene 3 pasos simples y claros</p>
-            </div>
+
+          <div class="ejemplo-card">
+            <div class="ejemplo-icon">💬</div>
+            <h3>Comunicación por Email</h3>
+            <ul class="ejemplo-list">
+              <li><strong>Usa etiquetas:</strong> [URGENTE], [IMPORTANTE], [FYI]</li>
+              <li><strong>Responde en 1 hora</strong> si es urgente</li>
+              <li><strong>Responde en 24 horas</strong> si es importante</li>
+              <li><strong>Sé específico</strong> en el asunto del email</li>
+            </ul>
           </div>
-          
-          <div class="step animate-slide-up">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Ve los Resultados</h3>
-              <p>Observa cómo mejora tu trabajo en equipo</p>
-            </div>
+
+          <div class="ejemplo-card">
+            <div class="ejemplo-icon">🤝</div>
+            <h3>Trabajo en Equipo</h3>
+            <ul class="ejemplo-list">
+              <li><strong>Saluda genuinamente</strong> a cada persona por su nombre</li>
+              <li><strong>Amplifica voces:</strong> "Me gusta la idea de [Nombre]"</li>
+              <li><strong>Di "Yes, and..."</strong> en lugar de "Yes, but..."</li>
+              <li><strong>Reconoce logros</strong> de manera específica y pública</li>
+            </ul>
+          </div>
+
+          <div class="ejemplo-card">
+            <div class="ejemplo-icon">🔧</div>
+            <h3>Gestión de Conflictos</h3>
+            <ul class="ejemplo-list">
+              <li><strong>Habla directamente</strong> con la persona en 48 horas</li>
+              <li><strong>Conversación uno a uno</strong> en privado</li>
+              <li><strong>Usa "Yo siento..."</strong> en lugar de "Tú hiciste..."</li>
+              <li><strong>Documenta acuerdos</strong> y haz seguimiento</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Quick Reference Section -->
+    <section class="quick-reference">
       <div class="container">
-        <div class="cta-content">
-          <h2>¿Listo para comenzar?</h2>
-          <p>Únete a las 1,500+ personas que ya están trabajando mejor juntos</p>
-          <router-link to="/comenzar" class="btn btn-primary btn-large">
-            Comenzar Gratis
-          </router-link>
+        <h2 class="section-title">Guía de Referencia Rápida</h2>
+        <div class="reference-grid">
+          <div class="reference-card">
+            <h3>⏰ Tiempos de Respuesta (SLA)</h3>
+            <ul>
+              <li>[URGENTE] → 1 hora</li>
+              <li>[IMPORTANTE] → 24 horas</li>
+              <li>[FYI] → Cuando puedas</li>
+            </ul>
+          </div>
+
+          <div class="reference-card">
+            <h3>📋 Antes de cada Reunión</h3>
+            <ul>
+              <li>Enviar agenda 24h antes</li>
+              <li>Material pre-lectura adjunto</li>
+              <li>Objetivo claro definido</li>
+            </ul>
+          </div>
+
+          <div class="reference-card">
+            <h3>✅ Después de cada Reunión</h3>
+            <ul>
+              <li>Resumen en 24h</li>
+              <li>Acuerdos documentados</li>
+              <li>Próximos pasos con responsables</li>
+            </ul>
+          </div>
+
+          <div class="reference-card">
+            <h3>🌟 Modelo STAR para Reconocimientos</h3>
+            <ul>
+              <li><strong>S</strong>ituación: Contexto</li>
+              <li><strong>T</strong>area: Qué debía hacer</li>
+              <li><strong>A</strong>cción: Qué hizo</li>
+              <li><strong>R</strong>esultado: Impacto logrado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contacto-section">
+      <div class="container">
+        <h2>¿Preguntas o Sugerencias?</h2>
+        <p>Estamos aquí para ayudarte a implementar estos principios</p>
+        <div class="contacto-options">
+          <a href="mailto:cultura@uniacc.cl" class="contacto-btn">
+            <span class="contacto-icon">📧</span>
+            <span>cultura@uniacc.cl</span>
+          </a>
+          <a href="#" class="contacto-btn">
+            <span class="contacto-icon">💬</span>
+            <span>Canal Teams: Cultura Colaboración</span>
+          </a>
         </div>
       </div>
     </section>
@@ -124,22 +166,65 @@
 </template>
 
 <script>
-import { useProgress } from '../composables/useProgress'
 import { useRouter } from 'vue-router'
 
 export default {
   name: 'HomeView',
   setup() {
     const router = useRouter()
-    const { principles } = useProgress()
 
-    const goToPrinciple = (id) => {
+    const principios = [
+      {
+        id: 'consciente',
+        title: 'UNIACC Consciente',
+        icon: '👁️',
+        description: 'Presencia plena en cada reunión - estar 100% presente, cámara encendida, sin distracciones.'
+      },
+      {
+        id: 'puntual',
+        title: 'UNIACC Puntual',
+        icon: '⏰',
+        description: 'Gestión eficaz del tiempo - agenda 24h antes, inicio puntual, resumen en 24h.'
+      },
+      {
+        id: 'comunica',
+        title: 'UNIACC Comunica',
+        icon: '💬',
+        description: 'Comunicación clara y efectiva - usa etiquetas, respeta SLAs, elige el canal correcto.'
+      },
+      {
+        id: 'valora',
+        title: 'UNIACC Valora',
+        icon: '🤝',
+        description: 'Diversidad e inclusión - saludo genuino, integración cálida, amplificar todas las voces.'
+      },
+      {
+        id: 'resuelve',
+        title: 'UNIACC Resuelve',
+        icon: '🔧',
+        description: 'Gestión constructiva de conflictos - conversación directa en 48h, protocolo claro.'
+      },
+      {
+        id: 'co-crea',
+        title: 'UNIACC Co-crea',
+        icon: '💡',
+        description: 'Innovación colaborativa - "Yes, and..." en lugar de "Yes, but...", normalizar "no sé".'
+      },
+      {
+        id: 'reconoce',
+        title: 'UNIACC Reconoce',
+        icon: '🌟',
+        description: 'Cultura de apreciación - reconocimiento específico con modelo STAR, 3 veces por semana.'
+      }
+    ]
+
+    const verPrincipio = (id) => {
       router.push(`/principios/${id}`)
     }
 
     return {
-      principles,
-      goToPrinciple
+      principios,
+      verPrincipio
     }
   }
 }
@@ -151,16 +236,17 @@ export default {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  min-height: 60vh;
+  display: flex;
   align-items: center;
-  min-height: 80vh;
-  padding: 80px 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.05) 0%, rgba(0, 122, 255, 0.02) 100%);
+}
+
+.hero-content {
+  max-width: 800px;
 }
 
 .hero-content h1 {
@@ -174,103 +260,24 @@ export default {
 .hero-subtitle {
   font-size: 1.5rem;
   color: var(--color-text-secondary);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
   margin-bottom: 40px;
+  line-height: 1.6;
 }
 
 .hero-actions {
   display: flex;
   gap: 20px;
-}
-
-.hero-image {
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.hero-illustration {
-  position: relative;
-  width: 300px;
-  height: 300px;
-}
-
-.team-icon {
-  font-size: 120px;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.collaboration-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.line {
-  position: absolute;
-  background: var(--color-primary);
-  opacity: 0.3;
-  border-radius: 2px;
-}
-
-.line-1 {
-  width: 100px;
-  height: 4px;
-  top: 30%;
-  left: 10%;
-  transform: rotate(15deg);
-  animation: pulse 2s infinite;
-}
-
-.line-2 {
-  width: 80px;
-  height: 4px;
-  top: 60%;
-  right: 15%;
-  transform: rotate(-20deg);
-  animation: pulse 2s infinite 0.5s;
-}
-
-.line-3 {
-  width: 60px;
-  height: 4px;
-  bottom: 25%;
-  left: 20%;
-  transform: rotate(45deg);
-  animation: pulse 2s infinite 1s;
-}
-
-.stats {
-  padding: 80px 0;
-  background: var(--color-surface);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-}
-
-.stat-label {
-  font-size: 1.1rem;
-  color: var(--color-text-secondary);
-}
-
-.principles-preview {
+.principios-section {
   padding: 100px 0;
 }
 
@@ -289,149 +296,223 @@ export default {
   margin-bottom: 60px;
 }
 
-.principles-grid {
+.principios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
 }
 
-.principle-card {
+.principio-card {
   background: white;
   border-radius: var(--border-radius-large);
-  padding: 30px;
+  padding: 40px;
   box-shadow: var(--shadow-small);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 2px solid var(--color-surface);
   cursor: pointer;
   transition: all var(--transition-normal);
   position: relative;
 }
 
-.principle-card:hover {
+.principio-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-large);
+  border-color: var(--color-primary);
 }
 
-.card-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.card-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--color-text-primary);
-}
-
-.card-description {
-  color: var(--color-text-secondary);
-  margin-bottom: 20px;
-}
-
-.card-progress {
-  margin-bottom: 20px;
-}
-
-.progress-text {
-  font-size: 0.9rem;
-  color: var(--color-text-tertiary);
-  margin-top: 8px;
-}
-
-.card-arrow {
+.card-number {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  font-size: 1.5rem;
-  color: var(--color-text-tertiary);
-  transition: all var(--transition-normal);
-}
-
-.principle-card:hover .card-arrow {
-  transform: translateX(4px);
-  color: var(--color-primary);
-}
-
-.how-it-works {
-  padding: 100px 0;
-  background: var(--color-surface);
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.step {
-  text-align: center;
-}
-
-.step-number {
-  width: 60px;
-  height: 60px;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
   background: var(--color-primary);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
   font-weight: 700;
-  margin: 0 auto 20px;
+  font-size: 1.2rem;
 }
 
-.step-content h3 {
-  font-size: 1.3rem;
+.card-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   color: var(--color-text-primary);
 }
 
-.step-content p {
+.card-description {
   color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-.cta-section {
+.card-footer {
+  padding-top: 20px;
+  border-top: 1px solid var(--color-surface);
+}
+
+.card-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: all var(--transition-normal);
+}
+
+.principio-card:hover .card-link {
+  transform: translateX(4px);
+  display: inline-block;
+}
+
+.ejemplos-section {
   padding: 100px 0;
-  background: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.ejemplos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.ejemplo-card {
+  background: white;
+  border-radius: var(--border-radius-large);
+  padding: 40px;
+  box-shadow: var(--shadow-small);
+}
+
+.ejemplo-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.ejemplo-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+
+.ejemplo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ejemplo-list li {
+  padding: 12px 0;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.ejemplo-list li:last-child {
+  border-bottom: none;
+}
+
+.ejemplo-list strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.quick-reference {
+  padding: 100px 0;
+}
+
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.reference-card {
+  background: white;
+  border-radius: var(--border-radius-large);
+  padding: 30px;
+  box-shadow: var(--shadow-small);
+  border-left: 4px solid var(--color-primary);
+}
+
+.reference-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+
+.reference-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reference-card li {
+  padding: 8px 0;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.reference-card strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.contacto-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: white;
   text-align: center;
 }
 
-.cta-content h2 {
+.contacto-section h2 {
   font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: white;
 }
 
-.cta-content p {
+.contacto-section p {
   font-size: 1.2rem;
   margin-bottom: 40px;
   color: rgba(255, 255, 255, 0.8);
 }
 
-.cta-section .btn {
-  background: white;
-  color: var(--color-primary);
+.contacto-options {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.cta-section .btn:hover {
-  background: var(--color-surface);
+.contacto-btn {
+  background: white;
+  color: var(--color-primary);
+  padding: 20px 30px;
+  border-radius: var(--border-radius-medium);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+}
+
+.contacto-btn:hover {
   transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.contacto-icon {
+  font-size: 1.5rem;
 }
 
 @media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
-    padding: 40px 20px;
-  }
-  
   .hero-content h1 {
     font-size: 2.5rem;
   }
@@ -441,26 +522,35 @@ export default {
   }
   
   .hero-actions {
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
   }
   
-  .stats-grid {
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .principios-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
   }
   
-  .steps {
+  .ejemplos-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
   }
   
-  .section-title {
-    font-size: 2rem;
+  .reference-grid {
+    grid-template-columns: 1fr;
   }
   
-  .cta-content h2 {
-    font-size: 2rem;
+  .contacto-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contacto-btn {
+    width: 100%;
+    max-width: 300px;
   }
 }
 </style>

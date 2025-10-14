@@ -9,13 +9,9 @@
         </router-link>
         
         <div class="nav-links">
-          <router-link to="/principios" class="nav-link">Principios</router-link>
-          <router-link to="/progreso" class="nav-link">Mi Progreso</router-link>
-          <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
-        </div>
-        
-        <div class="nav-progress">
-          <span class="progress-text">{{ completedPrinciples }}/7 completados</span>
+          <a href="#principios" class="nav-link">Los 7 Principios</a>
+          <a href="#ejemplos" class="nav-link">Ejemplos</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
         </div>
       </div>
     </nav>
@@ -27,22 +23,18 @@
 
     <!-- Bottom Navigation (Mobile) -->
     <nav class="bottom-nav" v-if="showNavbar && isMobile">
-      <router-link to="/" class="bottom-nav-item">
+      <a href="#inicio" class="bottom-nav-item">
         <span class="nav-icon">🏠</span>
         <span class="nav-label">Inicio</span>
-      </router-link>
-      <router-link to="/principios" class="bottom-nav-item">
-        <span class="nav-icon">🎯</span>
-        <span class="nav-label">Principios</span>
-      </router-link>
-      <router-link to="/progreso" class="bottom-nav-item">
-        <span class="nav-icon">📊</span>
-        <span class="nav-label">Progreso</span>
-      </router-link>
-      <router-link to="/dashboard" class="bottom-nav-item">
-        <span class="nav-icon">📈</span>
-        <span class="nav-label">Dashboard</span>
-      </router-link>
+      </a>
+      <a href="#principios" class="bottom-nav-item">
+        <span class="nav-icon">📖</span>
+        <span class="nav-label">Decálogo</span>
+      </a>
+      <a href="#ejemplos" class="bottom-nav-item">
+        <span class="nav-icon">💡</span>
+        <span class="nav-label">Ejemplos</span>
+      </a>
     </nav>
 
     <!-- Loading Overlay -->
@@ -63,18 +55,18 @@
 <script>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useProgress } from './composables/useProgress'
-import { useNotification } from './composables/useNotification'
-
 export default {
   name: 'App',
   setup() {
     const route = useRoute()
-    const { completedPrinciples } = useProgress()
-    const { notification, hideNotification } = useNotification()
     
     const isMobile = ref(false)
     const loading = ref(false)
+    const notification = ref({ show: false, type: 'info', message: '', icon: '📢' })
+
+    const hideNotification = () => {
+      notification.value.show = false
+    }
 
     const showNavbar = computed(() => {
       return route.name !== 'Principio'
@@ -90,7 +82,6 @@ export default {
     })
 
     return {
-      completedPrinciples,
       loading,
       notification,
       hideNotification,
