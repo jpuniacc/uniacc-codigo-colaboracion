@@ -1,0 +1,29 @@
+{
+  "name": "uniacc-colaboracion-app",
+  "version": "1.0.0",
+  "description": "Web App del Código de Colaboración UNIACC - Estilo Apple",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && netlify deploy --prod --dir=dist"
+  },
+  "dependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.17.0"
+  },
+  "keywords": [
+    "uniacc",
+    "colaboracion",
+    "teams",
+    "office365",
+    "cultura-organizacional"
+  ],
+  "author": "UNIACC",
+  "license": "MIT"
+}
