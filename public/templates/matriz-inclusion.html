@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Inclusión - UNIACC</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #e91e63;
+            padding-bottom: 20px;
+        }
+        .logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .title {
+            color: #e91e63;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0;
+        }
+        .subtitle {
+            color: #6e6e73;
+            margin: 10px 0 0 0;
+        }
+        .matrix-section {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #e91e63;
+        }
+        .matrix-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+        }
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr 1fr 1fr;
+            gap: 2px;
+            margin-bottom: 20px;
+        }
+        .matrix-header {
+            background: #e91e63;
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .matrix-cell {
+            background: white;
+            border: 2px solid #e5e5e7;
+            padding: 12px;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+        .matrix-row-header {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+        .assessment-section {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .assessment-title {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+        }
+        .assessment-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        .assessment-item:last-child {
+            border-bottom: none;
+        }
+        .assessment-question {
+            flex: 1;
+            font-size: 0.95rem;
+            margin-right: 15px;
+        }
+        .assessment-options {
+            display: flex;
+            gap: 10px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .option-label:hover {
+            background-color: #f0f0f0;
+        }
+        .score-section {
+            background: linear-gradient(135deg, #e91e63, #ff6b9d);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .score-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .score-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .action-plan {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        .action-item:last-child {
+            border-bottom: none;
+        }
+        .action-priority {
+            background: #e91e63;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            min-width: 60px;
+            text-align: center;
+        }
+        .action-content {
+            flex: 1;
+        }
+        .action-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1d1d1f;
+        }
+        .action-description {
+            font-size: 0.9rem;
+            color: #6e6e73;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e7;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/logo_uniacc.svg" alt="UNIACC" class="logo">
+        <h1 class="title">Matriz de Inclusión</h1>
+        <p class="subtitle">UNIACC Valora - Diversidad e Inclusión</p>
+    </div>
+
+    <div class="matrix-section">
+        <h2 class="matrix-title">🎯 Matriz de Evaluación de Inclusión</h2>
+        <div class="matrix-grid">
+            <div class="matrix-header">Aspecto</div>
+            <div class="matrix-header">Excelente (4)</div>
+            <div class="matrix-header">Bueno (3)</div>
+            <div class="matrix-header">Regular (2)</div>
+            
+            <div class="matrix-cell matrix-row-header">Participación Equitativa</div>
+            <div class="matrix-cell">Todos participan activamente y equitativamente</div>
+            <div class="matrix-cell">Mayoría participa, algunos más que otros</div>
+            <div class="matrix-cell">Pocos dominan la conversación</div>
+            
+            <div class="matrix-cell matrix-row-header">Escucha Activa</div>
+            <div class="matrix-cell">Todos escuchan respetuosamente sin interrumpir</div>
+            <div class="matrix-cell">Buena escucha, interrupciones ocasionales</div>
+            <div class="matrix-cell">Interrupciones frecuentes, poca escucha</div>
+            
+            <div class="matrix-cell matrix-row-header">Diversidad de Voces</div>
+            <div class="matrix-cell">Se escuchan todas las perspectivas diferentes</div>
+            <div class="matrix-cell">Algunas perspectivas diversas están presentes</div>
+            <div class="matrix-cell">Predomina una sola perspectiva</div>
+            
+            <div class="matrix-cell matrix-row-header">Respeto a Diferencias</div>
+            <div class="matrix-cell">Diferencias son valoradas y respetadas</div>
+            <div class="matrix-cell">Respeto general, algunas tensiones menores</div>
+            <div class="matrix-cell">Diferencias causan tensión o conflicto</div>
+            
+            <div class="matrix-cell matrix-row-header">Accesibilidad</div>
+            <div class="matrix-cell">Todos pueden participar sin barreras</div>
+            <div class="matrix-cell">Algunas barreras menores identificadas</div>
+            <div class="matrix-cell">Barreras significativas limitan participación</div>
+        </div>
+    </div>
+
+    <div class="matrix-section">
+        <h2 class="matrix-title">📊 Autoevaluación de Inclusión</h2>
+        
+        <div class="assessment-section">
+            <div class="assessment-title">👥 Participación en Reuniones</div>
+            <div class="assessment-item">
+                <div class="assessment-question">¿Todos los participantes tienen oportunidades equitativas para hablar?</div>
+                <div class="assessment-options">
+                    <label class="option-label">
+                        <input type="radio" name="participacion" value="4">
+                        <span>Siempre</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="participacion" value="3">
+                        <span>Frecuentemente</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="participacion" value="2">
+                        <span>A veces</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="participacion" value="1">
+                        <span>Raramente</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="assessment-item">
+                <div class="assessment-question">¿Se valoran y respetan las diferentes perspectivas y experiencias?</div>
+                <div class="assessment-options">
+                    <label class="option-label">
+                        <input type="radio" name="respeto" value="4">
+                        <span>Siempre</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="respeto" value="3">
+                        <span>Frecuentemente</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="respeto" value="2">
+                        <span>A veces</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="respeto" value="1">
+                        <span>Raramente</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="assessment-item">
+                <div class="assessment-question">¿Se toman medidas para incluir a personas con diferentes estilos de comunicación?</div>
+                <div class="assessment-options">
+                    <label class="option-label">
+                        <input type="radio" name="comunicacion" value="4">
+                        <span>Siempre</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="comunicacion" value="3">
+                        <span>Frecuentemente</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="comunicacion" value="2">
+                        <span>A veces</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="comunicacion" value="1">
+                        <span>Raramente</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="assessment-item">
+                <div class="assessment-question">¿Se consideran las diferentes necesidades de accesibilidad?</div>
+                <div class="assessment-options">
+                    <label class="option-label">
+                        <input type="radio" name="accesibilidad" value="4">
+                        <span>Siempre</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="accesibilidad" value="3">
+                        <span>Frecuentemente</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="accesibilidad" value="2">
+                        <span>A veces</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="accesibilidad" value="1">
+                        <span>Raramente</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="score-section">
+        <div class="score-title">🎯 Puntuación de Inclusión</div>
+        <div class="score-value" id="score">0/16</div>
+        <div class="score-description" id="scoreDescription">Completa la evaluación para ver tu puntuación</div>
+    </div>
+
+    <div class="matrix-section">
+        <h2 class="matrix-title">📋 Plan de Acción para Mejorar la Inclusión</h2>
+        
+        <div class="action-plan">
+            <div class="action-item">
+                <div class="action-priority">ALTA</div>
+                <div class="action-content">
+                    <div class="action-title">Implementar Rondas de Participación</div>
+                    <div class="action-description">En cada reunión, dar oportunidad a todos de expresar su opinión en rondas estructuradas.</div>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-priority">ALTA</div>
+                <div class="action-content">
+                    <div class="action-title">Capacitación en Sesgos Inconscientes</div>
+                    <div class="action-description">Realizar talleres sobre diversidad e inclusión para todo el equipo.</div>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-priority">MEDIA</div>
+                <div class="action-content">
+                    <div class="action-title">Diversificar Métodos de Comunicación</div>
+                    <div class="action-description">Ofrecer múltiples canales: verbal, escrito, visual para diferentes estilos de aprendizaje.</div>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-priority">MEDIA</div>
+                <div class="action-content">
+                    <div class="action-title">Crear Código de Conducta Inclusivo</div>
+                    <div class="action-description">Establecer normas claras sobre comportamiento respetuoso y lenguaje inclusivo.</div>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-priority">BAJA</div>
+                <div class="action-content">
+                    <div class="action-title">Celebrar Diversidad Cultural</div>
+                    <div class="action-description">Reconocer y celebrar las diferentes culturas y tradiciones del equipo.</div>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-priority">BAJA</div>
+                <div class="action-content">
+                    <div class="action-title">Mentoring Cruzado</div>
+                    <div class="action-description">Facilitar relaciones de mentoring entre personas de diferentes backgrounds.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>💡 Recordatorio:</strong> La inclusión no es un destino, es un proceso continuo de mejora</p>
+        <p>Código de Colaboración UNIACC v2.0 - UNIACC Valora</p>
+    </div>
+
+    <script>
+        function calculateScore() {
+            const inputs = document.querySelectorAll('input[type="radio"]:checked');
+            let total = 0;
+            let count = 0;
+            
+            inputs.forEach(input => {
+                total += parseInt(input.value);
+                count++;
+            });
+            
+            const scoreElement = document.getElementById('score');
+            const descriptionElement = document.getElementById('scoreDescription');
+            
+            if (count === 4) {
+                scoreElement.textContent = `${total}/16`;
+                
+                if (total >= 14) {
+                    descriptionElement.textContent = 'Excelente nivel de inclusión - ¡Sigue así!';
+                } else if (total >= 10) {
+                    descriptionElement.textContent = 'Buen nivel de inclusión - Hay oportunidades de mejora';
+                } else if (total >= 6) {
+                    descriptionElement.textContent = 'Nivel regular - Se necesitan acciones concretas';
+                } else {
+                    descriptionElement.textContent = 'Necesita atención prioritaria - Implementar plan de acción';
+                }
+            }
+        }
+        
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', calculateScore);
+        });
+    </script>
+</body>
+</html>

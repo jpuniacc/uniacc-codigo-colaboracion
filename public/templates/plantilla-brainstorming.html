@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Brainstorming - UNIACC</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #00B4D8;
+            padding-bottom: 20px;
+        }
+        .logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .title {
+            color: #00B4D8;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0;
+        }
+        .subtitle {
+            color: #6e6e73;
+            margin: 10px 0 0 0;
+        }
+        .session-info {
+            background: #e3f2fd;
+            border: 2px solid #00B4D8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #0277bd;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        .info-field {
+            border: 2px solid #00B4D8;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 1rem;
+            background: white;
+        }
+        .phase-section {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #00B4D8;
+        }
+        .phase-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .phase-icon {
+            font-size: 1.5rem;
+        }
+        .idea-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .idea-card {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 120px;
+            position: relative;
+            transition: border-color 0.3s;
+        }
+        .idea-card:hover {
+            border-color: #00B4D8;
+        }
+        .idea-input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            resize: none;
+            min-height: 80px;
+            outline: none;
+        }
+        .idea-input::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+        .add-idea-btn {
+            background: #00B4D8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .add-idea-btn:hover {
+            background: #0096c7;
+        }
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .criteria-card {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .criteria-title {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+        }
+        .criteria-slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+        .criteria-score {
+            text-align: center;
+            font-weight: 600;
+            color: #00B4D8;
+            font-size: 1.2rem;
+        }
+        .voting-section {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .voting-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .voting-card {
+            background: #f8f9fa;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .voting-idea {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1d1d1f;
+        }
+        .vote-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .vote-btn {
+            background: #00B4D8;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .vote-btn:hover {
+            background: #0096c7;
+        }
+        .vote-count {
+            font-weight: 600;
+            color: #00B4D8;
+        }
+        .action-plan {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        .action-item:last-child {
+            border-bottom: none;
+        }
+        .action-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+        }
+        .action-content {
+            flex: 1;
+        }
+        .action-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1d1d1f;
+        }
+        .action-details {
+            font-size: 0.9rem;
+            color: #6e6e73;
+        }
+        .rules-section {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .rules-title {
+            font-weight: 600;
+            color: #e65100;
+            margin-bottom: 15px;
+        }
+        .rules-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .rule-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e7;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/logo_uniacc.svg" alt="UNIACC" class="logo">
+        <h1 class="title">Plantilla de Brainstorming</h1>
+        <p class="subtitle">UNIACC Co-crea - Innovación Colaborativa</p>
+    </div>
+
+    <div class="session-info">
+        <h3 style="margin-top: 0; color: #0277bd;">📋 Información de la Sesión</h3>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">Tema/Problema:</span>
+                <input type="text" class="info-field" placeholder="¿Qué queremos resolver o crear?">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Facilitador:</span>
+                <input type="text" class="info-field" placeholder="Nombre del facilitador">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Fecha:</span>
+                <input type="date" class="info-field">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Duración:</span>
+                <input type="text" class="info-field" placeholder="Ej: 60 minutos">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Participantes:</span>
+                <input type="text" class="info-field" placeholder="Número de personas">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Objetivo:</span>
+                <input type="text" class="info-field" placeholder="¿Qué queremos lograr?">
+            </div>
+        </div>
+    </div>
+
+    <div class="rules-section">
+        <h3 class="rules-title">📝 Reglas del Brainstorming</h3>
+        <div class="rules-list">
+            <div class="rule-item">
+                <span>✅</span>
+                <span>No juzgar ideas</span>
+            </div>
+            <div class="rule-item">
+                <span>✅</span>
+                <span>Cantidad sobre calidad</span>
+            </div>
+            <div class="rule-item">
+                <span>✅</span>
+                <span>Ideas salvajes bienvenidas</span>
+            </div>
+            <div class="rule-item">
+                <span>✅</span>
+                <span>Construir sobre ideas de otros</span>
+            </div>
+            <div class="rule-item">
+                <span>✅</span>
+                <span>Una conversación a la vez</span>
+            </div>
+            <div class="rule-item">
+                <span>✅</span>
+                <span>Ser visual</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="phase-section">
+        <h2 class="phase-title">
+            <span class="phase-icon">💡</span>
+            Fase 1: Generación de Ideas
+        </h2>
+        <p style="color: #6e6e73; margin-bottom: 20px;">
+            <strong>Tiempo sugerido:</strong> 15-20 minutos | <strong>Objetivo:</strong> Generar el mayor número de ideas posible
+        </p>
+        
+        <button class="add-idea-btn" onclick="addIdeaCard()">+ Agregar Idea</button>
+        
+        <div class="idea-grid" id="ideasGrid">
+            <div class="idea-card">
+                <textarea class="idea-input" placeholder="Idea #1: Escribe tu primera idea aquí..."></textarea>
+            </div>
+            <div class="idea-card">
+                <textarea class="idea-input" placeholder="Idea #2: ¿Qué más se te ocurre?"></textarea>
+            </div>
+            <div class="idea-card">
+                <textarea class="idea-input" placeholder="Idea #3: Piensa fuera de la caja..."></textarea>
+            </div>
+            <div class="idea-card">
+                <textarea class="idea-input" placeholder="Idea #4: Una idea salvaje..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="phase-section">
+        <h2 class="phase-title">
+            <span class="phase-icon">🔍</span>
+            Fase 2: Evaluación y Filtrado
+        </h2>
+        <p style="color: #6e6e73; margin-bottom: 20px;">
+            <strong>Tiempo sugerido:</strong> 15-20 minutos | <strong>Objetivo:</strong> Evaluar ideas según criterios definidos
+        </p>
+        
+        <div class="criteria-grid">
+            <div class="criteria-card">
+                <div class="criteria-title">💡 Innovación</div>
+                <input type="range" class="criteria-slider" min="1" max="5" value="3">
+                <div class="criteria-score">3/5</div>
+            </div>
+            <div class="criteria-card">
+                <div class="criteria-title">⚡ Viabilidad</div>
+                <input type="range" class="criteria-slider" min="1" max="5" value="3">
+                <div class="criteria-score">3/5</div>
+            </div>
+            <div class="criteria-card">
+                <div class="criteria-title">💰 Costo</div>
+                <input type="range" class="criteria-slider" min="1" max="5" value="3">
+                <div class="criteria-score">3/5</div>
+            </div>
+            <div class="criteria-card">
+                <div class="criteria-title">⏱️ Tiempo</div>
+                <input type="range" class="criteria-slider" min="1" max="5" value="3">
+                <div class="criteria-score">3/5</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="phase-section">
+        <h2 class="phase-title">
+            <span class="phase-icon">🗳️</span>
+            Fase 3: Votación y Selección
+        </h2>
+        <p style="color: #6e6e73; margin-bottom: 20px;">
+            <strong>Tiempo sugerido:</strong> 10-15 minutos | <strong>Objetivo:</strong> Seleccionar las mejores ideas
+        </p>
+        
+        <div class="voting-section">
+            <div class="voting-grid">
+                <div class="voting-card">
+                    <div class="voting-idea">Idea Seleccionada #1</div>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" onclick="vote(this, 1)">👍</button>
+                        <button class="vote-btn" onclick="vote(this, -1)">👎</button>
+                    </div>
+                    <div class="vote-count">0 votos</div>
+                </div>
+                <div class="voting-card">
+                    <div class="voting-idea">Idea Seleccionada #2</div>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" onclick="vote(this, 1)">👍</button>
+                        <button class="vote-btn" onclick="vote(this, -1)">👎</button>
+                    </div>
+                    <div class="vote-count">0 votos</div>
+                </div>
+                <div class="voting-card">
+                    <div class="voting-idea">Idea Seleccionada #3</div>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" onclick="vote(this, 1)">👍</button>
+                        <button class="vote-btn" onclick="vote(this, -1)">👎</button>
+                    </div>
+                    <div class="vote-count">0 votos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="phase-section">
+        <h2 class="phase-title">
+            <span class="phase-icon">🎯</span>
+            Fase 4: Plan de Acción
+        </h2>
+        <p style="color: #6e6e73; margin-bottom: 20px;">
+            <strong>Tiempo sugerido:</strong> 10-15 minutos | <strong>Objetivo:</strong> Definir próximos pasos
+        </p>
+        
+        <div class="action-plan">
+            <div class="action-item">
+                <input type="checkbox" class="action-checkbox">
+                <div class="action-content">
+                    <div class="action-title">Validar idea seleccionada</div>
+                    <div class="action-details">Investigar viabilidad técnica y de mercado</div>
+                </div>
+            </div>
+            <div class="action-item">
+                <input type="checkbox" class="action-checkbox">
+                <div class="action-content">
+                    <div class="action-title">Crear prototipo o MVP</div>
+                    <div class="action-details">Desarrollar versión mínima para probar concepto</div>
+                </div>
+            </div>
+            <div class="action-item">
+                <input type="checkbox" class="action-checkbox">
+                <div class="action-content">
+                    <div class="action-title">Definir recursos necesarios</div>
+                    <div class="action-details">Presupuesto, tiempo, equipo, herramientas</div>
+                </div>
+            </div>
+            <div class="action-item">
+                <input type="checkbox" class="action-checkbox">
+                <div class="action-content">
+                    <div class="action-title">Establecer timeline</div>
+                    <div class="action-details">Fechas clave y milestones del proyecto</div>
+                </div>
+            </div>
+            <div class="action-item">
+                <input type="checkbox" class="action-checkbox">
+                <div class="action-content">
+                    <div class="action-title">Asignar responsabilidades</div>
+                    <div class="action-details">Definir quién hace qué y cuándo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>💡 Recordatorio:</strong> La mejor idea es la que se implementa exitosamente</p>
+        <p>Código de Colaboración UNIACC v2.0 - UNIACC Co-crea</p>
+    </div>
+
+    <script>
+        function addIdeaCard() {
+            const grid = document.getElementById('ideasGrid');
+            const newCard = document.createElement('div');
+            newCard.className = 'idea-card';
+            newCard.innerHTML = `
+                <textarea class="idea-input" placeholder="Nueva idea..."></textarea>
+            `;
+            grid.appendChild(newCard);
+        }
+
+        function vote(button, value) {
+            const card = button.closest('.voting-card');
+            const countElement = card.querySelector('.vote-count');
+            let currentVotes = parseInt(countElement.textContent);
+            countElement.textContent = (currentVotes + value) + ' votos';
+        }
+
+        // Update slider scores
+        document.querySelectorAll('.criteria-slider').forEach(slider => {
+            slider.addEventListener('input', function() {
+                const scoreElement = this.parentElement.querySelector('.criteria-score');
+                scoreElement.textContent = this.value + '/5';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -151,13 +151,13 @@
         <h2>¿Preguntas o Sugerencias?</h2>
         <p>Estamos aquí para ayudarte a implementar estos principios</p>
         <div class="contacto-options">
-          <a href="mailto:cultura@uniacc.cl" class="contacto-btn">
+          <a href="mailto:direccionditd@uniacc.cl" class="contacto-btn">
             <span class="contacto-icon">📧</span>
-            <span>cultura@uniacc.cl</span>
+            <span>direccionditd@uniacc.cl</span>
           </a>
           <a href="#" class="contacto-btn">
             <span class="contacto-icon">💬</span>
-            <span>Canal Teams: Cultura Colaboración</span>
+            <span>Canal Teams: Cultura Colaboración (PROXIMAMENTE)</span>
           </a>
         </div>
       </div>

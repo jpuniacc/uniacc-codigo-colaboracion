@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de Resolución de Conflictos - UNIACC</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 20px;
+        }
+        .logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .title {
+            color: #ff6b35;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0;
+        }
+        .subtitle {
+            color: #6e6e73;
+            margin: 10px 0 0 0;
+        }
+        .protocol-section {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b35;
+        }
+        .protocol-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+        }
+        .step-card {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #ff6b35;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .step-title {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+        .step-description {
+            font-size: 0.95rem;
+            color: #6e6e73;
+            margin-bottom: 15px;
+        }
+        .step-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .action-item {
+            background: #f8f9fa;
+            border: 1px solid #e5e5e7;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+        .conflict-form {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .form-title {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #1d1d1f;
+        }
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            border: 2px solid #e5e5e7;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .escalation-matrix {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .matrix-title {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+        }
+        .escalation-level {
+            background: #f8f9fa;
+            border-left: 4px solid #ff6b35;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .level-title {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 5px;
+        }
+        .level-description {
+            font-size: 0.9rem;
+            color: #6e6e73;
+        }
+        .tools-section {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .tool-card {
+            background: #f8f9fa;
+            border: 1px solid #e5e5e7;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .tool-name {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        .tool-description {
+            font-size: 0.9rem;
+            color: #6e6e73;
+            margin-bottom: 10px;
+        }
+        .tool-steps {
+            font-size: 0.85rem;
+            color: #6e6e73;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e7;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/logo_uniacc.svg" alt="UNIACC" class="logo">
+        <h1 class="title">Protocolo de Resolución de Conflictos</h1>
+        <p class="subtitle">UNIACC Resuelve - Gestión Constructiva de Conflictos</p>
+    </div>
+
+    <div class="protocol-section">
+        <h2 class="protocol-title">🔄 Proceso de Resolución en 5 Pasos</h2>
+        
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Identificar y Reconocer</div>
+            <div class="step-description">El primer paso es reconocer que existe un conflicto y definir claramente el problema.</div>
+            <div class="step-actions">
+                <div class="action-item">📝 Documentar el conflicto de manera objetiva</div>
+                <div class="action-item">🎯 Identificar las partes involucradas</div>
+                <div class="action-item">⏰ Determinar la urgencia del conflicto</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Escuchar Activamente</div>
+            <div class="step-description">Permitir que todas las partes expresen sus perspectivas sin interrupciones.</div>
+            <div class="step-actions">
+                <div class="action-item">👂 Practicar escucha activa</div>
+                <div class="action-item">🤝 Validar las emociones de cada parte</div>
+                <div class="action-item">📋 Tomar notas de los puntos clave</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Buscar Entendimiento Mutuo</div>
+            <div class="step-description">Identificar intereses comunes y áreas de acuerdo antes de buscar soluciones.</div>
+            <div class="step-actions">
+                <div class="action-item">🔍 Identificar intereses comunes</div>
+                <div class="action-item">💡 Encontrar puntos de acuerdo</div>
+                <div class="action-item">🎯 Clarificar objetivos compartidos</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-title">Generar Soluciones</div>
+            <div class="step-description">Brainstorming colaborativo para encontrar soluciones que beneficien a todas las partes.</div>
+            <div class="step-actions">
+                <div class="action-item">💭 Brainstorming sin críticas</div>
+                <div class="action-item">⚖️ Evaluar pros y contras</div>
+                <div class="action-item">🤝 Buscar soluciones ganar-ganar</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">5</div>
+            <div class="step-title">Implementar y Seguir</div>
+            <div class="step-description">Poner en práctica la solución acordada y establecer mecanismos de seguimiento.</div>
+            <div class="step-actions">
+                <div class="action-item">📅 Definir timeline de implementación</div>
+                <div class="action-item">👥 Asignar responsabilidades</div>
+                <div class="action-item">📊 Establecer métricas de seguimiento</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="conflict-form">
+        <h2 class="form-title">📝 Formulario de Reporte de Conflicto</h2>
+        
+        <div class="form-group">
+            <label class="form-label">Fecha del conflicto:</label>
+            <input type="date" class="form-input">
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Personas involucradas:</label>
+            <input type="text" class="form-input" placeholder="Listar nombres de todas las partes involucradas">
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Tipo de conflicto:</label>
+            <select class="form-select">
+                <option value="">Seleccionar tipo</option>
+                <option value="comunicacion">Problemas de comunicación</option>
+                <option value="proceso">Diferencias en procesos de trabajo</option>
+                <option value="personalidad">Conflictos de personalidad</option>
+                <option value="recursos">Disputas por recursos</option>
+                <option value="decisiones">Desacuerdos en decisiones</option>
+                <option value="otro">Otro (especificar)</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Descripción del conflicto:</label>
+            <textarea class="form-textarea" placeholder="Describir de manera objetiva qué ocurrió, sin juicios de valor..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Impacto en el trabajo:</label>
+            <textarea class="form-textarea" placeholder="¿Cómo está afectando este conflicto al trabajo del equipo?"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Intento de resolución previo:</label>
+            <textarea class="form-textarea" placeholder="¿Se han intentado resolver este conflicto antes? ¿Qué se ha hecho?"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Nivel de urgencia:</label>
+            <select class="form-select">
+                <option value="">Seleccionar urgencia</option>
+                <option value="baja">Baja - Puede esperar</option>
+                <option value="media">Media - Requiere atención pronto</option>
+                <option value="alta">Alta - Necesita resolución inmediata</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="escalation-matrix">
+        <h2 class="matrix-title">📈 Matriz de Escalamiento</h2>
+        
+        <div class="escalation-level">
+            <div class="level-title">Nivel 1: Resolución Directa</div>
+            <div class="level-description">
+                Las partes involucradas intentan resolver el conflicto directamente entre ellas.
+                <br><strong>Cuándo usar:</strong> Conflictos menores, malentendidos simples
+            </div>
+        </div>
+        
+        <div class="escalation-level">
+            <div class="level-title">Nivel 2: Mediación por Par</div>
+            <div class="level-description">
+                Un colega neutral facilita la conversación entre las partes.
+                <br><strong>Cuándo usar:</strong> Conflictos que no se resuelven en Nivel 1
+            </div>
+        </div>
+        
+        <div class="escalation-level">
+            <div class="level-title">Nivel 3: Supervisión Directa</div>
+            <div class="level-description">
+                El supervisor directo interviene para facilitar la resolución.
+                <br><strong>Cuándo usar:</strong> Conflictos que afectan el rendimiento del equipo
+            </div>
+        </div>
+        
+        <div class="escalation-level">
+            <div class="level-title">Nivel 4: Recursos Humanos</div>
+            <div class="level-description">
+                Intervención de RRHH para casos más complejos o sensibles.
+                <br><strong>Cuándo usar:</strong> Conflictos serios, violaciones de políticas
+            </div>
+        </div>
+    </div>
+
+    <div class="tools-section">
+        <h2 class="matrix-title">🛠️ Herramientas de Resolución</h2>
+        
+        <div class="tool-card">
+            <div class="tool-name">Técnica del "Yo"</div>
+            <div class="tool-description">Expresar sentimientos y necesidades sin culpar a otros.</div>
+            <div class="tool-steps">
+                <strong>Estructura:</strong> "Yo me siento [emoción] cuando [situación específica] porque [necesidad]. Me gustaría [solicitud específica]."
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <div class="tool-name">Escucha Reflexiva</div>
+            <div class="tool-description">Repetir lo que escuchaste para confirmar comprensión.</div>
+            <div class="tool-steps">
+                <strong>Pasos:</strong> 1) Escucha completamente, 2) Parafrasea lo que escuchaste, 3) Pregunta si entendiste correctamente
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <div class="tool-name">Identificación de Intereses</div>
+            <div class="tool-description">Distinguir entre posiciones (lo que dicen que quieren) e intereses (lo que realmente necesitan).</div>
+            <div class="tool-steps">
+                <strong>Preguntas clave:</strong> "¿Por qué es importante esto para ti?" "¿Qué necesidad estás tratando de satisfacer?"
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <div class="tool-name">Brainstorming de Soluciones</div>
+            <div class="tool-description">Generar múltiples opciones sin evaluarlas inicialmente.</div>
+            <div class="tool-steps">
+                <strong>Reglas:</strong> 1) Sin críticas, 2) Cantidad sobre calidad, 3) Construir sobre ideas de otros, 4) Ideas salvajes bienvenidas
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>💡 Recordatorio:</strong> Los conflictos son oportunidades de crecimiento cuando se manejan constructivamente</p>
+        <p>Código de Colaboración UNIACC v2.0 - UNIACC Resuelve</p>
+    </div>
+</body>
+</html>

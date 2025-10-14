@@ -187,7 +187,8 @@ export default {
     }
 
     const downloadTemplate = (file) => {
-      alert(`Descargando template: ${file}\n(Funcionalidad en desarrollo)`)
+      // Abrir el archivo HTML directamente
+      window.open(file, '_blank')
     }
 
     onMounted(() => {

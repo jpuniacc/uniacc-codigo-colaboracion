@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Reunión - UNIACC</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #ff9500;
+            padding-bottom: 20px;
+        }
+        .logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .title {
+            color: #ff9500;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0;
+        }
+        .subtitle {
+            color: #6e6e73;
+            margin: 10px 0 0 0;
+        }
+        .meeting-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .meeting-info h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #856404;
+            font-size: 0.9rem;
+        }
+        .info-field {
+            border: none;
+            border-bottom: 2px solid #ff9500;
+            background: transparent;
+            padding: 5px 0;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .agenda-section {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #ff9500;
+        }
+        .agenda-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+        }
+        .agenda-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        .agenda-item:last-child {
+            border-bottom: none;
+        }
+        .time-field {
+            width: 80px;
+            border: 2px solid #ff9500;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .topic-field {
+            flex: 1;
+            border: 2px solid #e5e5e7;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 1rem;
+            margin-right: 15px;
+        }
+        .duration-field {
+            width: 60px;
+            border: 2px solid #e5e5e7;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e7;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        .add-item-btn {
+            background: #ff9500;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        @media print {
+            body { padding: 20px; }
+            .agenda-section { break-inside: avoid; }
+            .add-item-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/logo_uniacc.svg" alt="UNIACC" class="logo">
+        <h1 class="title">Agenda de Reunión</h1>
+        <p class="subtitle">UNIACC Puntual - Gestión Eficaz del Tiempo</p>
+    </div>
+
+    <div class="meeting-info">
+        <h3>📅 Información de la Reunión</h3>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">Título de la Reunión:</span>
+                <input type="text" class="info-field" placeholder="Ej: Planificación Trimestral Q1">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Fecha:</span>
+                <input type="date" class="info-field">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Hora de Inicio:</span>
+                <input type="time" class="info-field">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Hora de Fin:</span>
+                <input type="time" class="info-field">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Organizador:</span>
+                <input type="text" class="info-field" placeholder="Tu nombre">
+            </div>
+            <div class="info-item">
+                <span class="info-label">Ubicación/Plataforma:</span>
+                <input type="text" class="info-field" placeholder="Teams/Sala física">
+            </div>
+        </div>
+    </div>
+
+    <div class="agenda-section">
+        <h2 class="agenda-title">⏰ Agenda Detallada</h2>
+        
+        <div class="agenda-item">
+            <input type="text" class="time-field" placeholder="09:00" value="09:00">
+            <input type="text" class="topic-field" placeholder="Tema de la agenda" value="Bienvenida y objetivos">
+            <input type="text" class="duration-field" placeholder="5min" value="5min">
+        </div>
+        
+        <div class="agenda-item">
+            <input type="text" class="time-field" placeholder="09:05" value="09:05">
+            <input type="text" class="topic-field" placeholder="Tema de la agenda" value="Revisión de acuerdos anteriores">
+            <input type="text" class="duration-field" placeholder="10min" value="10min">
+        </div>
+        
+        <div class="agenda-item">
+            <input type="text" class="time-field" placeholder="09:15" value="09:15">
+            <input type="text" class="topic-field" placeholder="Tema de la agenda" value="Puntos principales de discusión">
+            <input type="text" class="duration-field" placeholder="30min" value="30min">
+        </div>
+        
+        <div class="agenda-item">
+            <input type="text" class="time-field" placeholder="09:45" value="09:45">
+            <input type="text" class="topic-field" placeholder="Tema de la agenda" value="Toma de decisiones">
+            <input type="text" class="duration-field" placeholder="15min" value="15min">
+        </div>
+        
+        <div class="agenda-item">
+            <input type="text" class="time-field" placeholder="10:00" value="10:00">
+            <input type="text" class="topic-field" placeholder="Tema de la agenda" value="Próximos pasos y cierre">
+            <input type="text" class="duration-field" placeholder="5min" value="5min">
+        </div>
+        
+        <button class="add-item-btn" onclick="addAgendaItem()">+ Agregar Punto</button>
+    </div>
+
+    <div class="agenda-section">
+        <h2 class="agenda-title">👥 Lista de Participantes</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                <input type="text" placeholder="Nombre del participante" style="flex: 1; padding: 8px; border: 1px solid #e5e5e7; border-radius: 4px;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                <input type="text" placeholder="Nombre del participante" style="flex: 1; padding: 8px; border: 1px solid #e5e5e7; border-radius: 4px;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                <input type="text" placeholder="Nombre del participante" style="flex: 1; padding: 8px; border: 1px solid #e5e5e7; border-radius: 4px;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                <input type="text" placeholder="Nombre del participante" style="flex: 1; padding: 8px; border: 1px solid #e5e5e7; border-radius: 4px;">
+            </div>
+        </div>
+    </div>
+
+    <div class="agenda-section">
+        <h2 class="agenda-title">📋 Materiales Necesarios</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                <span>Presentación preparada</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                <span>Datos y métricas relevantes</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                <span>Documentos de referencia</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" style="width: 18px; height: 18px;">
+                <span>Acceso a herramientas digitales</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>💡 Recordatorio:</strong> Envía esta agenda 24 horas antes de la reunión</p>
+        <p>Código de Colaboración UNIACC v2.0 - UNIACC Puntual</p>
+    </div>
+
+    <script>
+        function addAgendaItem() {
+            const agendaSection = document.querySelector('.agenda-section');
+            const addButton = document.querySelector('.add-item-btn');
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'agenda-item';
+            newItem.innerHTML = `
+                <input type="text" class="time-field" placeholder="--:--">
+                <input type="text" class="topic-field" placeholder="Nuevo tema">
+                <input type="text" class="duration-field" placeholder="min">
+            `;
+            
+            agendaSection.insertBefore(newItem, addButton);
+        }
+    </script>
+</body>
+</html>

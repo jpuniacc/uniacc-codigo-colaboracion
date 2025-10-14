@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template de Notas de Reunión - UNIACC</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #007aff;
+            padding-bottom: 20px;
+        }
+        .logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .title {
+            color: #007aff;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0;
+        }
+        .subtitle {
+            color: #6e6e73;
+            margin: 10px 0 0 0;
+        }
+        .meeting-header {
+            background: #e3f2fd;
+            border: 2px solid #007aff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .header-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .header-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .header-label {
+            font-weight: 600;
+            color: #0277bd;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        .header-field {
+            border: 2px solid #007aff;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 1rem;
+            background: white;
+        }
+        .notes-section {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #007aff;
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-icon {
+            font-size: 1.3rem;
+        }
+        .notes-textarea {
+            width: 100%;
+            border: 2px solid #e5e5e7;
+            border-radius: 6px;
+            padding: 15px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.3s;
+            background: white;
+            font-family: inherit;
+            line-height: 1.8;
+        }
+        .notes-textarea:focus {
+            outline: none;
+            border-color: #007aff;
+        }
+        .participants-section {
+            background: white;
+            border: 2px solid #e5e5e7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .participants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        .participant-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .participant-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .participant-input {
+            flex: 1;
+            border: 1px solid #e5e5e7;
+            border-radius: 4px;
+            padding: 8px;
+            font-size: 0.9rem;
+        }
+        .decisions-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .decisions-table th {
+            background: #007aff;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .decisions-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        .decisions-table tr:last-child td {
+            border-bottom: none;
+        }
+        .table-input {
+            width: 100%;
+            border: 1px solid #e5e5e7;
+            border-radius: 4px;
+            padding: 8px;
+            font-size: 0.9rem;
+        }
+        .actions-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .actions-table th {
+            background: #34c759;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .actions-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        .actions-table tr:last-child td {
+            border-bottom: none;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .priority-alta { background: #ff3b30; color: white; }
+        .priority-media { background: #ff9500; color: white; }
+        .priority-baja { background: #34c759; color: white; }
+        .add-row-btn {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        .add-row-btn:hover {
+            background: #0051d5;
+        }
+        .summary-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .summary-title {
+            font-weight: 600;
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ffe0b2;
+        }
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e7;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        @media print {
+            body { padding: 20px; }
+            .notes-section { break-inside: avoid; }
+            .add-row-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/logo_uniacc.svg" alt="UNIACC" class="logo">
+        <h1 class="title">Notas de Reunión</h1>
+        <p class="subtitle">Template para Documentación Efectiva</p>
+    </div>
+
+    <div class="meeting-header">
+        <h3 style="margin-top: 0; color: #0277bd;">📋 Información de la Reunión</h3>
+        <div class="header-grid">
+            <div class="header-item">
+                <span class="header-label">Título de la Reunión:</span>
+                <input type="text" class="header-field" placeholder="Ej: Planificación Sprint Q1">
+            </div>
+            <div class="header-item">
+                <span class="header-label">Fecha:</span>
+                <input type="date" class="header-field">
+            </div>
+            <div class="header-item">
+                <span class="header-label">Hora:</span>
+                <input type="time" class="header-field">
+            </div>
+            <div class="header-item">
+                <span class="header-label">Duración:</span>
+                <input type="text" class="header-field" placeholder="Ej: 60 minutos">
+            </div>
+            <div class="header-item">
+                <span class="header-label">Facilitador:</span>
+                <input type="text" class="header-field" placeholder="Nombre del facilitador">
+            </div>
+            <div class="header-item">
+                <span class="header-label">Tomó Notas:</span>
+                <input type="text" class="header-field" placeholder="Tu nombre">
+            </div>
+        </div>
+        <div class="header-item" style="margin-top: 10px;">
+            <span class="header-label">Objetivo de la Reunión:</span>
+            <textarea class="header-field" style="min-height: 60px; resize: vertical;" placeholder="¿Cuál es el propósito principal de esta reunión?"></textarea>
+        </div>
+    </div>
+
+    <div class="participants-section">
+        <h3 class="section-title">
+            <span class="section-icon">👥</span>
+            Participantes
+        </h3>
+        <div class="participants-grid">
+            <div class="participant-item">
+                <input type="checkbox" class="participant-checkbox" checked>
+                <input type="text" class="participant-input" placeholder="Nombre - Rol/Departamento">
+            </div>
+            <div class="participant-item">
+                <input type="checkbox" class="participant-checkbox" checked>
+                <input type="text" class="participant-input" placeholder="Nombre - Rol/Departamento">
+            </div>
+            <div class="participant-item">
+                <input type="checkbox" class="participant-checkbox" checked>
+                <input type="text" class="participant-input" placeholder="Nombre - Rol/Departamento">
+            </div>
+            <div class="participant-item">
+                <input type="checkbox" class="participant-checkbox">
+                <input type="text" class="participant-input" placeholder="Nombre - Rol/Departamento">
+            </div>
+            <div class="participant-item">
+                <input type="checkbox" class="participant-checkbox">
+                <input type="text" class="participant-input" placeholder="Nombre - Rol/Departamento">
+            </div>
+            <div class="participant-item">
+                <input type="checkbox" class="participant-checkbox">
+                <input type="text" class="participant-input" placeholder="Nombre - Rol/Departamento">
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-section">
+        <h2 class="section-title">
+            <span class="section-icon">📝</span>
+            Resumen Ejecutivo
+        </h2>
+        <textarea class="notes-textarea" placeholder="Resumen breve de los temas más importantes discutidos (3-4 líneas máximo)..."></textarea>
+    </div>
+
+    <div class="notes-section">
+        <h2 class="section-title">
+            <span class="section-icon">💬</span>
+            Puntos Clave Discutidos
+        </h2>
+        <textarea class="notes-textarea" placeholder="• Punto 1: [Descripción]
+• Punto 2: [Descripción]
+• Punto 3: [Descripción]
+• Punto 4: [Descripción]
+
+Usa viñetas (•) para organizar los puntos principales..."></textarea>
+    </div>
+
+    <div class="notes-section">
+        <h2 class="section-title">
+            <span class="section-icon">✅</span>
+            Decisiones Tomadas
+        </h2>
+        <table class="decisions-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">#</th>
+                    <th style="width: 50%;">Decisión</th>
+                    <th style="width: 20%;">Responsable</th>
+                    <th style="width: 20%;">Contexto</th>
+                </tr>
+            </thead>
+            <tbody id="decisionsTableBody">
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" class="table-input" placeholder="Descripción de la decisión tomada"></td>
+                    <td><input type="text" class="table-input" placeholder="Nombre"></td>
+                    <td><input type="text" class="table-input" placeholder="¿Por qué?"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="text" class="table-input" placeholder="Descripción de la decisión tomada"></td>
+                    <td><input type="text" class="table-input" placeholder="Nombre"></td>
+                    <td><input type="text" class="table-input" placeholder="¿Por qué?"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="text" class="table-input" placeholder="Descripción de la decisión tomada"></td>
+                    <td><input type="text" class="table-input" placeholder="Nombre"></td>
+                    <td><input type="text" class="table-input" placeholder="¿Por qué?"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="add-row-btn" onclick="addDecisionRow()">+ Agregar Decisión</button>
+    </div>
+
+    <div class="notes-section">
+        <h2 class="section-title">
+            <span class="section-icon">🎯</span>
+            Acciones y Compromisos
+        </h2>
+        <table class="actions-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">✓</th>
+                    <th style="width: 37%;">Acción</th>
+                    <th style="width: 20%;">Responsable</th>
+                    <th style="width: 15%;">Fecha Límite</th>
+                    <th style="width: 20%;">Prioridad</th>
+                </tr>
+            </thead>
+            <tbody id="actionsTableBody">
+                <tr>
+                    <td><input type="checkbox" style="width: 20px; height: 20px;"></td>
+                    <td><input type="text" class="table-input" placeholder="Descripción de la acción"></td>
+                    <td><input type="text" class="table-input" placeholder="Nombre"></td>
+                    <td><input type="date" class="table-input"></td>
+                    <td>
+                        <select class="table-input">
+                            <option value="alta">🔴 Alta</option>
+                            <option value="media" selected>🟡 Media</option>
+                            <option value="baja">🟢 Baja</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" style="width: 20px; height: 20px;"></td>
+                    <td><input type="text" class="table-input" placeholder="Descripción de la acción"></td>
+                    <td><input type="text" class="table-input" placeholder="Nombre"></td>
+                    <td><input type="date" class="table-input"></td>
+                    <td>
+                        <select class="table-input">
+                            <option value="alta">🔴 Alta</option>
+                            <option value="media" selected>🟡 Media</option>
+                            <option value="baja">🟢 Baja</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" style="width: 20px; height: 20px;"></td>
+                    <td><input type="text" class="table-input" placeholder="Descripción de la acción"></td>
+                    <td><input type="text" class="table-input" placeholder="Nombre"></td>
+                    <td><input type="date" class="table-input"></td>
+                    <td>
+                        <select class="table-input">
+                            <option value="alta">🔴 Alta</option>
+                            <option value="media" selected>🟡 Media</option>
+                            <option value="baja">🟢 Baja</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="add-row-btn" onclick="addActionRow()">+ Agregar Acción</button>
+    </div>
+
+    <div class="notes-section">
+        <h2 class="section-title">
+            <span class="section-icon">❓</span>
+            Preguntas Abiertas / Temas Pendientes
+        </h2>
+        <textarea class="notes-textarea" placeholder="• Pregunta 1: [Descripción y quién debe responder]
+• Pregunta 2: [Descripción y quién debe responder]
+• Tema pendiente 1: [Descripción y próximos pasos]
+
+Lista las preguntas que quedaron sin responder o temas que requieren seguimiento..."></textarea>
+    </div>
+
+    <div class="notes-section">
+        <h2 class="section-title">
+            <span class="section-icon">🔗</span>
+            Recursos y Referencias
+        </h2>
+        <textarea class="notes-textarea" placeholder="• Documento 1: [Nombre y link]
+• Presentación: [Nombre y link]
+• Herramienta: [Nombre y link]
+
+Lista los documentos, links y recursos mencionados en la reunión..."></textarea>
+    </div>
+
+    <div class="summary-box">
+        <h3 class="summary-title">📌 Próxima Reunión</h3>
+        <div class="header-grid">
+            <div class="header-item">
+                <span class="header-label">Fecha Propuesta:</span>
+                <input type="date" class="header-field">
+            </div>
+            <div class="header-item">
+                <span class="header-label">Tema Principal:</span>
+                <input type="text" class="header-field" placeholder="¿Qué se discutirá?">
+            </div>
+        </div>
+        <div class="header-item" style="margin-top: 10px;">
+            <span class="header-label">Preparación Requerida:</span>
+            <textarea class="header-field" style="min-height: 60px; resize: vertical;" placeholder="¿Qué deben preparar los participantes para la próxima reunión?"></textarea>
+        </div>
+    </div>
+
+    <div class="notes-section">
+        <h2 class="section-title">
+            <span class="section-icon">💡</span>
+            Notas Adicionales
+        </h2>
+        <textarea class="notes-textarea" placeholder="Cualquier información adicional relevante que no encaje en las secciones anteriores..."></textarea>
+    </div>
+
+    <div class="footer">
+        <p><strong>💡 Tip:</strong> Distribuye estas notas dentro de las 24 horas siguientes a la reunión</p>
+        <p><strong>📧 Enviar a:</strong> Todos los participantes + personas que necesiten estar informadas</p>
+        <p>Código de Colaboración UNIACC v2.0</p>
+    </div>
+
+    <script>
+        let decisionCounter = 3;
+        let actionCounter = 3;
+
+        function addDecisionRow() {
+            decisionCounter++;
+            const tbody = document.getElementById('decisionsTableBody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${decisionCounter}</td>
+                <td><input type="text" class="table-input" placeholder="Descripción de la decisión tomada"></td>
+                <td><input type="text" class="table-input" placeholder="Nombre"></td>
+                <td><input type="text" class="table-input" placeholder="¿Por qué?"></td>
+            `;
+            tbody.appendChild(newRow);
+        }
+
+        function addActionRow() {
+            actionCounter++;
+            const tbody = document.getElementById('actionsTableBody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="checkbox" style="width: 20px; height: 20px;"></td>
+                <td><input type="text" class="table-input" placeholder="Descripción de la acción"></td>
+                <td><input type="text" class="table-input" placeholder="Nombre"></td>
+                <td><input type="date" class="table-input"></td>
+                <td>
+                    <select class="table-input">
+                        <option value="alta">🔴 Alta</option>
+                        <option value="media" selected>🟡 Media</option>
+                        <option value="baja">🟢 Baja</option>
+                    </select>
+                </td>
+            `;
+            tbody.appendChild(newRow);
+        }
+    </script>
+</body>
+</html>
