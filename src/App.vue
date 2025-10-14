@@ -4,8 +4,8 @@
     <nav class="navbar" v-if="showNavbar">
       <div class="nav-container">
         <router-link to="/" class="nav-brand">
-          <img src="/logo.svg" alt="UNIACC" class="nav-logo">
-          <span class="nav-title">Colaboración</span>
+          <img src="/logo_uniacc.svg" alt="UNIACC" class="nav-logo">
+          <span class="nav-title">Decálogo de Colaboración</span>
         </router-link>
         
         <div class="nav-links">
@@ -115,7 +115,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 70px;
 }
 
 .nav-brand {
@@ -128,7 +128,7 @@ export default {
 }
 
 .nav-logo {
-  height: 32px;
+  height: 80px;
   width: auto;
 }
 
