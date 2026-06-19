@@ -3,7 +3,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
       <div class="hero-content animate-slide-up">
-        <h1>Código de Colaboración UNIACC</h1>
+        <h1>Acuerdos de Convivencia UNIACC</h1>
         <p class="hero-subtitle">7 principios fundamentales para la excelencia colaborativa</p>
         <p class="hero-description">
           Un decálogo inspirado en el trabajo en conjunto entre lideres del taller Juntos Creamos UNIACC.

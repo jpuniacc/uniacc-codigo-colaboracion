@@ -1,7 +1,7 @@
 {
   "name": "uniacc-colaboracion-app",
   "version": "1.0.0",
-  "description": "Web App del Código de Colaboración UNIACC - Estilo Apple",
+  "description": "Web App de Acuerdos de Convivencia UNIACC - Estilo Apple",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,9 +14,9 @@
     "vue-router": "^4.6.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.0",
-    "vite": "^5.0.0",
-    "vite-plugin-pwa": "^0.17.0"
+    "@vitejs/plugin-vue": "^5.2.4",
+    "vite": "^6.4.3",
+    "vite-plugin-pwa": "^0.21.2"
   },
   "keywords": [
     "uniacc",

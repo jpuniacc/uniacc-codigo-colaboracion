@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Código de Colaboración UNIACC',
+        name: 'Acuerdos de Convivencia UNIACC',
         short_name: 'UNIACC Colaboración',
         description: '7 reglas simples para trabajar mejor juntos',
         theme_color: '#007aff',

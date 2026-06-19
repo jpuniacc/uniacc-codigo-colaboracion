@@ -1,4 +1,4 @@
-# 📖 Código de Colaboración UNIACC
+# 📖 Acuerdos de Convivencia UNIACC
 
 Decálogo digital con los 7 principios de colaboración de UNIACC.
 

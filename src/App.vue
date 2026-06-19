@@ -5,7 +5,7 @@
       <div class="nav-container">
         <router-link to="/" class="nav-brand">
           <img src="/logo_uniacc.svg" alt="UNIACC" class="nav-logo">
-          <span class="nav-title">Decálogo de Colaboración</span>
+          <span class="nav-title">Decálogo de Convivencia</span>
         </router-link>
         
         <div class="nav-links">
